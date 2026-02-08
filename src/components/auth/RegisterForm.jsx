@@ -31,7 +31,7 @@ const RegisterForm = () => {
         password,
       });
 
-      navigate("/dashboard");
+      navigate("/verify-otp");
     } catch (err) {
       setError(err.message);
     } finally {
