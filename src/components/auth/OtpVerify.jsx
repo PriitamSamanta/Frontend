@@ -20,24 +20,49 @@ const OtpVerify = () => {
   };
 
   return (
-    <div className="auth-container">
+  <div className="auth-page">
+    <div className="otp-card">
       <h2>Verify OTP</h2>
-      <p>Enter the OTP sent to your email</p>
+      <p className="sub-text">Enter 6 digit code sent to your email</p>
 
-      <form onSubmit={handleVerify}>
-        <input
-          type="text"
-          placeholder="Enter OTP"
-          value={otp}
-          onChange={(e) => setOtp(e.target.value)}
-        />
+      <div className="otp-inputs">
+        {[...Array(6)].map((_, index) => (
+          <input
+            key={index}
+            type="text"
+            maxLength="1"
+            className="otp-box"
+            value={otp[index] || ""}
+            onChange={(e) => {
+              const value = e.target.value;
+              if (!/^[0-9]?$/.test(value)) return;
 
-        {error && <p className="error">{error}</p>}
+              const newOtp = otp.split("");
+              newOtp[index] = value;
+              setOtp(newOtp.join(""));
 
-        <button type="submit">Verify</button>
-      </form>
+              // auto focus next
+              if (value && e.target.nextSibling) {
+                e.target.nextSibling.focus();
+              }
+            }}
+          />
+        ))}
+      </div>
+
+      {error && <p className="error-text">{error}</p>}
+
+      <button className="auth-btn" onClick={handleVerify}>
+        Verify OTP
+      </button>
+
+      <p className="resend-text">
+        Didn’t receive code? <span>Resend</span>
+      </p>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default OtpVerify;

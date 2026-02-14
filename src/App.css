@@ -28,12 +28,20 @@ body,
   display: flex;
   position: relative;
   overflow: hidden;
+
+  background: linear-gradient(
+    to right,
+    #a855f7 0,
+    #a855f7 calc(50%),
+    #0f0f14 calc(50%),
+    #0f0f14 100%
+  );
 }
 
 /* CARD */
 .auth-card {
-  width: 900px;
-  height: 480px;
+  width: 1000px;
+  height: 520px;
   display: flex;
   background: #141414;
   border-radius: 16px;
@@ -62,13 +70,6 @@ body,
 }
 
 /* LEFT */
-
-.auth-page-left {
-  flex: 1;
-  background: radial-gradient(#a855f7);
-
-  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.7);
-}
 
 .auth-left {
   flex: 1;
@@ -144,15 +145,6 @@ body,
 
 /* RIGHT SECTION */
 
-.auth-page-right {
-  flex: 1;
-  background: #0b0b0f;
-
-  box-shadow:
-    inset 0 0 120px rgba(168, 85, 247, 0.25),
-    inset 0 0 160px rgba(56, 189, 248, 0.2);
-}
-
 .auth-right {
   flex: 1;
   background: #a855f7;
@@ -174,6 +166,43 @@ body,
 /* hover effect */
 .auth-image:hover {
   transform: scale(1.05);
+}
+
+/* ===== OTP UI ===== */
+
+.otp-card {
+  width: 450px;
+  padding: 50px 40px;
+  background: #141414;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  color: white;
+  margin: auto;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.otp-box {
+  width: 55px;
+  height: 60px;
+  font-size: 22px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background: #1c1c1c;
+  color: white;
+  transition: 0.3s;
+}
+
+.otp-box:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
 }
 
 @media (max-width: 768px) {
