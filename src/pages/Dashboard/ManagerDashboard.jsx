@@ -2,11 +2,12 @@ import { useState } from "react";
 import Sidebar from "../../components/dashboard/Sidebar";
 import Topbar from "../../components/dashboard/Topbar";
 import StatCard from "../../components/dashboard/StatCard";
+import MonthlyRevenueChart from "../../components/dashboard/MonthlyRevenueChart";
 import "../../styles/dashboard.css";
 
 const ManagerDashboard = () => {
   // ✅ hooks hamesha yahan
-  const [users, setUsers] = useState([
+  const [users] = useState([
     {
       id: 1,
       name: "Rohit Sharma",
@@ -30,6 +31,14 @@ const ManagerDashboard = () => {
     },
   ]);
 
+  const salesData = [
+  { month: "Jan", revenue: 12000 },
+  { month: "Feb", revenue: 18000 },
+  { month: "Mar", revenue: 15000 },
+  { month: "Apr", revenue: 22000 },
+  { month: "May", revenue: 26000 },
+  ];
+
   return (
     <div className="dashboard-layout">
       {/* LEFT SIDEBAR */}
@@ -46,6 +55,13 @@ const ManagerDashboard = () => {
           <StatCard title="Orders" value="35,343" />
           <StatCard title="Active Rate" value="70%" />
         </div>
+
+        <div style={{ marginTop: "40px" }}>
+          <h2 style={{ color: "white", marginBottom: "20px" }}>Monthly Revenue</h2>
+
+          <MonthlyRevenueChart data={salesData} />
+        </div>
+
 
         {/* USERS TABLE */}
         <div className="content-box">
